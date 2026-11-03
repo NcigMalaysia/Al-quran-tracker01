@@ -1,130 +1,636 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <link rel="preconnect" href="https://api.goaffpro.com" />
-    <link rel="preconnect" href="https://static.goaffpro.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://sessions.bugsnag.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjejak Tilawah Al-Baqarah (2 Muka Surat Sehari)</title>
+    <!-- Sokongan PWA & Mobile Home Screen -->
+    <meta name="theme-color" content="#064e3b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tilawah Al-Baqarah">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-arabic {
+            font-family: 'Amiri', serif;
+        }
+        /* Custom smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        @keyframes celebrateBadge {
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .celebrate-anim {
+            animation: celebrateBadge 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased selection:bg-emerald-100 selection:text-emerald-800">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <!-- OG / Social Share Tags -->
-<!--    <meta-->
-<!--      property="og:image"-->
-<!--      content="https://api-server-3.goaffpro.com/extras/og_image.jpg"-->
-<!--    />-->
-<!--    <meta property="og:image:width" content="1200" />-->
-<!--    <meta property="og:image:height" content="630" />-->
-<!--    <meta property="og:type" content="website" />-->
-<!--    <meta name="twitter:card" content="summary_large_image" />-->
-<!--    <meta-->
-<!--      name="twitter:image"-->
-<!--      content="https://api-server-3.goaffpro.com/extras/og_image_twitter.jpg"-->
-<!--    />-->
-    <title>Affiliate Portal</title>
-    <script type="module" crossorigin src="/assets/index-BZmp5Zxe.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DaUk9Zaw.css">
-    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
-    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <!-- Header & Hero Section -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-800 text-white shadow-xl">
+        <!-- Subtle Pattern Background -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <div class="max-w-4xl mx-auto px-4 py-8 sm:py-10 relative z-10">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 mb-2">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Mushaf Madinah (48 Muka Surat)
+                    </span>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+                        Penjejak Surah Al-Baqarah
+                    </h1>
+                    <p class="text-emerald-200/90 text-sm sm:text-base mt-1">
+                        Sasaran konsisten: <strong class="text-white">2 muka surat setiap hari</strong> selama 24 hari.
+                    </p>
+                </div>
+                <div class="text-right flex flex-col items-center sm:items-end">
+                    <span class="font-arabic text-3xl sm:text-4xl text-amber-300 drop-shadow">سُورَةُ البَقَرَةِ</span>
+                    <span class="text-xs text-emerald-300/80 mt-1">Ayat 1 hingga 286</span>
+                </div>
+            </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+            <!-- Progress Bar Card -->
+            <div class="mt-8 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15 shadow-inner">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2 text-sm font-medium">
+                    <span class="text-emerald-100 flex items-center gap-2">
+                        <i data-lucide="award" class="w-4 h-4 text-amber-300"></i> Kemajuan Keseluruhan
+                    </span>
+                    <span class="text-white font-bold" id="progressPercentage">0% Selesai</span>
+                </div>
+
+                <!-- Bar Track -->
+                <div class="w-full h-3.5 bg-black/30 rounded-full overflow-hidden p-0.5 shadow-inner">
+                    <div id="progressBar" class="h-full bg-gradient-to-r from-amber-400 via-emerald-400 to-teal-300 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                </div>
+
+                <!-- Mini Stats -->
+                <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-white/10 text-center">
+                    <div>
+                        <div class="text-xs text-emerald-200/80">Selesai Dibaca</div>
+                        <div class="text-lg sm:text-xl font-bold text-white"><span id="statPagesDone">0</span> <span class="text-xs font-normal text-emerald-300">/ 48 ms</span></div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-emerald-200/80">Hari Dilengkapkan</div>
+                        <div class="text-lg sm:text-xl font-bold text-white"><span id="statDaysDone">0</span> <span class="text-xs font-normal text-emerald-300">/ 24 hari</span></div>
+                    </div>
+                    <div>
+                        <div class="text-xs text-emerald-200/80">Baki Hari</div>
+                        <div class="text-lg sm:text-xl font-bold text-amber-300"><span id="statDaysRemaining">24</span> <span class="text-xs font-normal text-amber-200">hari</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6 sm:py-8">
+
+        <!-- Banner Khatam (Terselindung secara default) -->
+        <div id="congratsBanner" class="hidden mb-6 bg-gradient-to-r from-amber-500 via-amber-600 to-emerald-600 text-white rounded-2xl p-6 shadow-xl celebrate-anim text-center sm:text-left sm:flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0 mx-auto sm:mx-0">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-amber-200"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-extrabold">Alhamdulillah! Tahniah!</h3>
+                    <p class="text-amber-100 text-sm mt-0.5">Anda telah berjaya menamatkan keseluruhan bacaan Surah Al-Baqarah (48 muka surat)! Semoga amalan ini menjadi syafaat dan pelindung.</p>
+                </div>
+            </div>
+            <button onclick="resetAllProgressPrompt()" class="mt-4 sm:mt-0 px-4 py-2 bg-white text-emerald-800 text-xs font-bold rounded-xl shadow hover:bg-amber-50 transition shrink-0 active:scale-95">
+                Ulang Bacaan
+            </button>
+        </div>
+
+        <!-- Action Bar & Controls -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 bg-white p-3.5 sm:p-4 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button id="filterAll" onclick="setFilter('all')" class="flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-emerald-600 text-white shadow-sm transition">
+                    Semua (24 Hari)
+                </button>
+                <button id="filterPending" onclick="setFilter('pending')" class="flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    Belum Selesai
+                </button>
+                <button id="filterCompleted" onclick="setFilter('completed')" class="flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+                    Telah Dibaca
+                </button>
+            </div>
+
+            <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <button onclick="openPublishGuideModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-800 bg-blue-100/90 hover:bg-blue-200 border border-blue-300 rounded-xl transition active:scale-95">
+                    <i data-lucide="globe" class="w-3.5 h-3.5"></i> Dapatkan Link Web (URL)
+                </button>
+                <button onclick="openInstallGuideModal()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-800 bg-emerald-100/80 hover:bg-emerald-200 border border-emerald-300 rounded-xl transition active:scale-95">
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i> Letak di Skrin Telefon
+                </button>
+                <button onclick="quickNextPrompt()" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition active:scale-95">
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Selesai Seterusnya
+                </button>
+                <button onclick="openInfoModal()" class="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition" title="Panduan & Rujukan">
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                </button>
+                <button onclick="resetAllProgressPrompt()" class="p-2 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-xl transition" title="Set Semula Semua">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Target Cards Grid -->
+        <div id="daysGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
+            <!-- Dinamik dijana oleh JavaScript -->
+        </div>
+
+        <!-- Empty state placeholder -->
+        <div id="emptyFilterState" class="hidden text-center py-12 bg-white rounded-2xl border border-slate-200/80 p-6">
+            <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="inbox" class="w-6 h-6"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-600">Tiada rekod untuk paparan ini.</p>
+            <p class="text-xs text-slate-400 mt-1">Cuba tukar tapisan kepada "Semua".</p>
+        </div>
+
+    </main>
+
+    <!-- Modal Rujukan & Info -->
+    <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+            <button onclick="closeInfoModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                    <i data-lucide="book" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-base">Panduan Tilawah 2 Muka Sehari</h4>
+                    <span class="text-xs text-emerald-600 font-medium">Mushaf Madinah</span>
+                </div>
+            </div>
+            <div class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+                <p>• <strong>Surah Al-Baqarah</strong> bermula dari <strong>Muka Surat 2</strong> hingga <strong>Muka Surat 49</strong> (Jumlah: 48 muka surat).</p>
+                <p>• Dengan membaca <strong>2 muka surat setiap hari</strong>, anda mengambil masa genap <strong>24 hari</strong> untuk khatam keseluruhan surah.</p>
+                <p>• Setiap kad mengandungi nota panduan ayat bagi muka surat tersebut untuk memudahkan anda menyemak bacaan.</p>
+                <p>• Kemajuan anda akan disimpan secara selamat di dalam peranti ini dan tidak akan hilang walaupun pelayar ditutup.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeInfoModal()" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow transition">
+                    Faham & Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pengesahan Reset -->
+    <div id="confirmResetModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 text-center">
+            <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Set Semula Penjejak?</h4>
+            <p class="text-xs text-slate-500 mt-1 mb-5">Adakah anda pasti mahu memadam semua tanda 'selesai' dan memulakan dari Hari 1 semula?</p>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="closeResetModal()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
+                    Batal
+                </button>
+                <button onclick="confirmResetAll()" class="py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold rounded-xl shadow transition">
+                    Ya, Set Semula
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Panduan Dapatkan Link URL Online Percuma -->
+    <div id="publishGuideModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+            <button onclick="closePublishGuideModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                    <i data-lucide="link" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-base">Cara Dapatkan Link URL Sendiri</h4>
+                    <span class="text-xs text-blue-600 font-medium">Percuma & Ambil Masa 1 Minit</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                Supaya anda boleh buka link di Google telefon dan tekan <em>Add to Home Screen</em>, anda boleh gunakan tapak percuma <strong>Vercel</strong>, <strong>Tiiny Host</strong>, atau <strong>GitHub Pages</strong>.
+            </p>
+
+            <div class="space-y-3 text-xs">
+                <!-- Cara Paling Pantas: Tiiny.host -->
+                <div class="p-3.5 bg-blue-50/70 rounded-2xl border border-blue-200">
+                    <div class="font-bold text-blue-900 mb-1 flex items-center gap-1.5">
+                        <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i> Cara Paling Pantas (Tiiny.host):
+                    </div>
+                    <ol class="list-decimal list-inside space-y-1.5 text-slate-700">
+                        <li>Tekan butang hijau di bawah: <strong>"Salin Semua Kod Fail Ini"</strong>.</li>
+                        <li>Buka laman <strong class="text-blue-700">tiiny.host</strong> di browser anda.</li>
+                        <li>Simpan kod ini sebagai fail <code class="bg-blue-100 px-1 py-0.5 rounded text-blue-800 font-mono">index.html</code> dan muat naik (*drag & drop*).</li>
+                        <li>Anda akan terus dapat link URL seperti <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">albaqarah.tiiny.site</code>!</li>
+                    </ol>
+                </div>
+
+                <!-- Cara Kedua: GitHub / Vercel -->
+                <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div class="font-bold text-slate-800 mb-1 flex items-center gap-1.5">
+                        <i data-lucide="globe" class="w-4 h-4 text-emerald-600"></i> Cara Kekal Sepanjang Hayat:
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        Masukkan fail <code class="font-mono bg-slate-200 px-1 rounded">index.html</code> ini ke dalam akaun <strong>GitHub Pages</strong> atau <strong>Vercel</strong>. Ia akan sentiasa percuma dan link tidak akan tamat tempoh.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <button onclick="copyFullHtmlCode()" id="copyCodeBtn" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow flex items-center justify-center gap-2 transition active:scale-95">
+                    <i data-lucide="copy" class="w-4 h-4"></i> Salin Semua Kod Laman Web Ini
+                </button>
+                <button onclick="closePublishGuideModal()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold rounded-xl transition">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Panduan Simpan ke Skrin Telefon (Home Screen) -->
+    <div id="installGuideModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative">
+            <button onclick="closeInstallGuideModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1.5 rounded-full hover:bg-slate-100">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                    <i data-lucide="smartphone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-base">Cara Letak Di Depan Skrin Telefon</h4>
+                    <span class="text-xs text-emerald-600 font-medium">Buka seperti Apps biasa!</span>
+                </div>
+            </div>
+            
+            <div class="space-y-4 text-xs text-slate-600">
+                <!-- Panduan iPhone / Safari -->
+                <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                    <div class="flex items-center gap-2 font-bold text-slate-800 mb-1.5">
+                        <i data-lucide="apple" class="w-4 h-4 text-slate-700"></i> Untuk Pengguna iPhone (Safari):
+                    </div>
+                    <ol class="list-decimal list-inside space-y-1 text-slate-600">
+                        <li>Buka pautan laman ini di pelayar <strong>Safari</strong>.</li>
+                        <li>Tekan butang <strong>Share</strong> (<i data-lucide="share" class="w-3.5 h-3.5 inline"></i> kotak beranak panah ke atas di bawah skrin).</li>
+                        <li>Skrol ke bawah dan pilih <strong>"Add to Home Screen"</strong> (Tambah ke Skrin Utama).</li>
+                        <li>Tekan <strong>Add</strong> di penjuru atas kanan.</li>
+                    </ol>
+                </div>
+
+                <!-- Panduan Android / Chrome -->
+                <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100">
+                    <div class="flex items-center gap-2 font-bold text-emerald-900 mb-1.5">
+                        <i data-lucide="smartphone" class="w-4 h-4 text-emerald-700"></i> Untuk Pengguna Android (Chrome):
+                    </div>
+                    <ol class="list-decimal list-inside space-y-1 text-slate-600">
+                        <li>Buka pautan laman ini di <strong>Google Chrome</strong>.</li>
+                        <li>Tekan butang <strong>Menu 3 titik</strong> (<i data-lucide="more-vertical" class="w-3.5 h-3.5 inline"></i>) di penjuru atas kanan.</li>
+                        <li>Pilih <strong>"Add to Home screen"</strong> atau <strong>"Install app"</strong>.</li>
+                        <li>Tekan <strong>Add / Install</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-slate-100">
+                <button onclick="closeInstallGuideModal()" class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold rounded-xl shadow transition">
+                    Faham & Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-6 border-t border-slate-200/80 bg-white text-center text-xs text-slate-500">
+        <p>Semoga Allah memberkati dan mempermudahkan istiqamah tilawah Al-Quran anda setiap hari.</p>
+    </footer>
+
+    <!-- Logik Aplikasi -->
     <script>
-      if (window.addEventListener) {
-        window.addEventListener("message", handleMessage, false);
-        // message event handler (e is event object)
-        function handleMessage(e) {
-          // Reference to element for data display
-          if (e.data.load_iframe_resizer) {
-            loadIframeResizer();
-          }
+        // Data Perincian 24 Hari (Muka Surat 2 hingga 49 dalam Mushaf Resam Uthmani / Madinah)
+        const baqarahSchedule = [
+            { day: 1, startPage: 2, endPage: 3, ayatRange: "Ayat 1 - 16", info: "Permulaan Al-Baqarah, ciri orang bertakwa & munafiq" },
+            { day: 2, startPage: 4, endPage: 5, ayatRange: "Ayat 17 - 37", info: "Perumpamaan munafik & penciptaan Nabi Adam AS" },
+            { day: 3, startPage: 6, endPage: 7, ayatRange: "Ayat 38 - 48", info: "Peringatan nikmat kepada Bani Israil" },
+            { day: 4, startPage: 8, endPage: 9, ayatRange: "Ayat 49 - 61", info: "Kisah keselamatan Nabi Musa AS & Bani Israil" },
+            { day: 5, startPage: 10, endPage: 11, ayatRange: "Ayat 62 - 76", info: "Kisah lembu betina (Al-Baqarah) & hati yang keras" },
+            { day: 6, startPage: 12, endPage: 13, ayatRange: "Ayat 77 - 88", info: "Perjanjian Bani Israil & penolakan rasul" },
+            { day: 7, startPage: 14, endPage: 15, ayatRange: "Ayat 89 - 101", info: "Dengki terhadap wahyu & fitnah sihir Harut Marut" },
+            { day: 8, startPage: 16, endPage: 17, ayatRange: "Ayat 102 - 112", info: "Nasakh mansukh & dakwaan ahli kitab" },
+            { day: 9, startPage: 18, endPage: 19, ayatRange: "Ayat 113 - 126", info: "Nabi Ibrahim AS membina Kaabah & doanya" },
+            { day: 10, startPage: 20, endPage: 21, ayatRange: "Ayat 127 - 141", info: "Wasiat Ibrahim & Ya'qub AS (Akhir Juzuk 1)" },
+            { day: 11, startPage: 22, endPage: 23, ayatRange: "Ayat 142 - 153", info: "Awal Juzuk 2: Peralihan Kiblat ke Kaabah & sabar" },
+            { day: 12, startPage: 24, endPage: 25, ayatRange: "Ayat 154 - 169", info: "Ujian kehidupan, Safa & Marwa, makanan halal" },
+            { day: 13, startPage: 26, endPage: 27, ayatRange: "Ayat 170 - 181", info: "Hukum Qisas, wasiat & kefardhuan Puasa Ramadan" },
+            { day: 14, startPage: 28, endPage: 29, ayatRange: "Ayat 182 - 190", info: "Adab puasa, doa & perang mempertahankan diri" },
+            { day: 15, startPage: 30, endPage: 31, ayatRange: "Ayat 191 - 202", info: "Peraturan & adab ibadah Haji & doa kebaikan dunia akhirat" },
+            { day: 16, startPage: 32, endPage: 33, ayatRange: "Ayat 203 - 215", info: "Masuk Islam secara menyeluruh & infaq" },
+            { day: 17, startPage: 34, endPage: 35, ayatRange: "Ayat 216 - 224", info: "Hukum arak, judi, anak yatim & nikah" },
+            { day: 18, startPage: 36, endPage: 37, ayatRange: "Ayat 225 - 233", info: "Sumpah, Talak, Iddah & penyusuan anak" },
+            { day: 19, startPage: 38, endPage: 39, ayatRange: "Ayat 234 - 245", info: "Memelihara solat & kisah Talut melawan Jalut" },
+            { day: 20, startPage: 40, endPage: 41, ayatRange: "Ayat 246 - 252", info: "Daud membunuh Jalut (Akhir Juzuk 2)" },
+            { day: 21, startPage: 42, endPage: 43, ayatRange: "Ayat 253 - 259", info: "Awal Juzuk 3: Ayat Al-Kursi & hujah Nabi Ibrahim" },
+            { day: 22, startPage: 44, endPage: 45, ayatRange: "Ayat 260 - 271", info: "Perumpamaan sedekah & infaq ikhlas" },
+            { day: 23, startPage: 46, endPage: 47, ayatRange: "Ayat 272 - 282", info: "Pengharaman Riba & ayat hutang terpanjang" },
+            { day: 24, startPage: 48, endPage: 49, ayatRange: "Ayat 283 - 286", info: "Dua ayat terakhir Al-Baqarah (Khatam Surah!)" }
+        ];
+
+        const STORAGE_KEY = 'surah_baqarah_tracker_v1';
+        let trackerState = {};
+        let currentFilter = 'all';
+
+        // Muat turun rekod dari Memori / Storan Tempatan
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    trackerState = JSON.parse(saved);
+                } else {
+                    trackerState = {};
+                }
+            } catch (e) {
+                console.error("Gagal membaca storan peranti", e);
+                trackerState = {};
+            }
         }
-      }
-      if (window.self !== window.top) {
-        // it is embedded
-        loadIframeResizer();
-        const style = document.createElement("style");
-        document.body.appendChild(style);
-        style.innerHTML = ".min-vh-100{min-height:inherit !important}";
-      }
-      function loadIframeResizer() {
-        var script = document.createElement("script");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.6/iframeResizer.contentWindow.min.js";
-        document.head.appendChild(script);
-      }
+
+        // Simpan rekod terkini
+        function saveState() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(trackerState));
+            } catch (e) {
+                console.error("Gagal menyimpan rekod", e);
+            }
+        }
+
+        // Ubah status siap bacaan sesuatu hari
+        function toggleDay(dayNum) {
+            if (trackerState[dayNum]) {
+                delete trackerState[dayNum];
+            } else {
+                const now = new Date();
+                trackerState[dayNum] = {
+                    completedAt: now.toLocaleDateString('ms-MY', { day: 'numeric', month: 'short', year: 'numeric' }),
+                    timestamp: now.getTime()
+                };
+            }
+            saveState();
+            renderApp();
+        }
+
+        // Quick action: Tandakan hari terawal yang belum selesai
+        function quickNextPrompt() {
+            const nextPending = baqarahSchedule.find(item => !trackerState[item.day]);
+            if (nextPending) {
+                toggleDay(nextPending.day);
+                // Scroll secara lancar ke kad yang baru siap jika dalam paparan
+                setTimeout(() => {
+                    const el = document.getElementById(`day-card-${nextPending.day}`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+
+        // Tapisan Paparan
+        function setFilter(filter) {
+            currentFilter = filter;
+            
+            // Kemas kini gaya butang tapisan
+            const btnAll = document.getElementById('filterAll');
+            const btnPending = document.getElementById('filterPending');
+            const btnCompleted = document.getElementById('filterCompleted');
+
+            const activeClass = 'bg-emerald-600 text-white shadow-sm';
+            const inactiveClass = 'bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+            btnAll.className = `flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl transition ${filter === 'all' ? activeClass : inactiveClass}`;
+            btnPending.className = `flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl transition ${filter === 'pending' ? activeClass : inactiveClass}`;
+            btnCompleted.className = `flex-1 sm:flex-initial px-3.5 py-1.5 text-xs font-semibold rounded-xl transition ${filter === 'completed' ? activeClass : inactiveClass}`;
+
+            renderCards();
+        }
+
+        // Kemas kini statistik dan paparan kemajuan
+        function updateStats() {
+            const completedCount = Object.keys(trackerState).length;
+            const totalDays = baqarahSchedule.length;
+            const completedPages = completedCount * 2;
+            const percentage = Math.round((completedCount / totalDays) * 100);
+            const remaining = totalDays - completedCount;
+
+            document.getElementById('progressPercentage').innerText = `${percentage}% Selesai`;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            document.getElementById('statPagesDone').innerText = completedPages;
+            document.getElementById('statDaysDone').innerText = completedCount;
+            document.getElementById('statDaysRemaining').innerText = remaining;
+
+            // Papar banner tahniah jika khatam sepenuhnya
+            const congratsBanner = document.getElementById('congratsBanner');
+            if (completedCount === totalDays) {
+                congratsBanner.classList.remove('hidden');
+            } else {
+                congratsBanner.classList.add('hidden');
+            }
+        }
+
+        // Render senarai kad hari
+        function renderCards() {
+            const container = document.getElementById('daysGrid');
+            const emptyState = document.getElementById('emptyFilterState');
+            container.innerHTML = '';
+
+            let filteredList = baqarahSchedule.filter(item => {
+                const isDone = !!trackerState[item.day];
+                if (currentFilter === 'pending') return !isDone;
+                if (currentFilter === 'completed') return isDone;
+                return true;
+            });
+
+            if (filteredList.length === 0) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filteredList.forEach(item => {
+                const isDone = !!trackerState[item.day];
+                const card = document.createElement('div');
+                card.id = `day-card-${item.day}`;
+                card.className = `relative rounded-2xl p-4 sm:p-5 transition-all duration-300 border ${
+                    isDone 
+                        ? 'bg-emerald-50/70 border-emerald-200 shadow-sm' 
+                        : 'bg-white border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-300'
+                }`;
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-10 h-10 rounded-2xl font-bold text-sm flex items-center justify-center shrink-0 ${
+                                isDone 
+                                    ? 'bg-emerald-600 text-white shadow-emerald-200 shadow-md' 
+                                    : 'bg-slate-100 text-slate-700'
+                            }">
+                                ${item.day}
+                            </span>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 class="font-bold text-sm sm:text-base ${isDone ? 'text-emerald-950 line-through decoration-emerald-600/60' : 'text-slate-800'}">
+                                        Hari Ke-${item.day}
+                                    </h3>
+                                    ${isDone ? '<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Selesai</span>' : ''}
+                                </div>
+                                <span class="text-xs font-semibold text-emerald-700 block mt-0.5">
+                                    Muka Surat ${item.startPage} & ${item.endPage}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox Button -->
+                        <button 
+                            onclick="toggleDay(${item.day})"
+                            class="group p-2 rounded-xl transition duration-200 active:scale-90 flex items-center justify-center ${
+                                isDone 
+                                    ? 'bg-emerald-600 text-white hover:bg-rose-600 hover:text-white' 
+                                    : 'bg-slate-100 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 border border-slate-200'
+                            }"
+                            title="${isDone ? 'Batal selesai' : 'Tandakan selesai'}"
+                        >
+                            <i data-lucide="${isDone ? 'check' : 'square'}" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110"></i>
+                        </button>
+                    </div>
+
+                    <!-- Details Box -->
+                    <div class="mt-3 pt-3 border-t ${isDone ? 'border-emerald-200/60' : 'border-slate-100'} flex flex-col gap-1 text-xs">
+                        <div class="flex items-center justify-between text-slate-600">
+                            <span class="flex items-center gap-1 font-medium text-slate-700">
+                                <i data-lucide="bookmark" class="w-3.5 h-3.5 text-amber-500"></i> ${item.ayatRange}
+                            </span>
+                            ${isDone && trackerState[item.day]?.completedAt ? `<span class="text-[11px] text-emerald-700 italic">Dibaca: ${trackerState[item.day].completedAt}</span>` : ''}
+                        </div>
+                        <p class="text-slate-500 text-[11px] mt-0.5 leading-relaxed">
+                            ${item.info}
+                        </p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            // Refresh lucide icons
+            lucide.createIcons();
+        }
+
+        function renderApp() {
+            updateStats();
+            renderCards();
+        }
+
+        // Modal Controls
+        function openInfoModal() {
+            document.getElementById('infoModal').classList.remove('hidden');
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.add('hidden');
+        }
+
+        function resetAllProgressPrompt() {
+            document.getElementById('confirmResetModal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            document.getElementById('confirmResetModal').classList.add('hidden');
+        }
+
+        // Modal Panduan Install / Simpan Skrin Depan
+        function openInstallGuideModal() {
+            document.getElementById('installGuideModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeInstallGuideModal() {
+            document.getElementById('installGuideModal').classList.add('hidden');
+        }
+
+        // Modal Panduan Dapatkan Link
+        function openPublishGuideModal() {
+            document.getElementById('publishGuideModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closePublishGuideModal() {
+            document.getElementById('publishGuideModal').classList.add('hidden');
+        }
+
+        // Fungsi Salin Kod HTML Penuh untuk Dihoskan
+        function copyFullHtmlCode() {
+            const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const textarea = document.createElement("textarea");
+            textarea.value = htmlContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const btn = document.getElementById('copyCodeBtn');
+                btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Kod Berjaya Disalin!`;
+                btn.classList.remove('bg-emerald-700', 'hover:bg-emerald-800');
+                btn.classList.add('bg-green-600');
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = `<i data-lucide="copy" class="w-4 h-4"></i> Salin Semua Kod Laman Web Ini`;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-emerald-700', 'hover:bg-emerald-800');
+                    lucide.createIcons();
+                }, 3000);
+            } catch (err) {
+                console.error("Gagal menyalin kod: ", err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function confirmResetAll() {
+            trackerState = {};
+            saveState();
+            closeResetModal();
+            renderApp();
+        }
+
+        // Inisialisasi Aplikasi Semasa Laman Dimuatkan
+        window.addEventListener('DOMContentLoaded', () => {
+            loadState();
+            renderApp();
+        });
     </script>
-    <script type="text/javascript">
-      function setupResizer() {
-        const style = document.createElement("style");
-        document.body.appendChild(style);
-        style.innerHTML = ".min-vh-100{min-height:inherit !important}";
-        const targetNode = document.getElementById("root");
-
-        // Options for the observer (which mutations to observe)
-        const config = { attributes: true, childList: true, subtree: true };
-
-        // Callback function to execute when mutations are observed
-        const callback = function (mutationsList, observer) {
-          setHeight();
-        };
-        //setInterval(setHeight, 1000)
-        function getDocHeight() {
-          return targetNode.offsetHeight;
-        }
-
-        // Create an observer instance linked to the callback function
-        const observer = new MutationObserver(callback);
-
-        // Start observing the target node for configured mutations
-        observer.observe(targetNode, config);
-        function setHeight() {
-          const height = getDocHeight();
-          window.parent.postMessage({ affiliate_page_height: height }, "*");
-        }
-        setHeight();
-        //setInterval(setHeight, 1000)
-      }
-      if (window.addEventListener) {
-        window.addEventListener("message", handleMessage, false);
-        // message event handler (e is event object)
-        function handleMessage(e) {
-          // Reference to element for data display
-          if (e.data.setup_resizer) {
-            setupResizer();
-            window.removeEventListener("message", handleMessage);
-          }
-        }
-      }
-      // Later, you can stop observing
-      //    observer.disconnect();
-    </script>
-    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-    <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-B6Q4zhvB.js"></script>
-    <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-Djer_LKJ.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
-  </body>
+</body>
 </html>
