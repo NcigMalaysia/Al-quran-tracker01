@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://api.goaffpro.com" />
+    <link rel="preconnect" href="https://static.goaffpro.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://sessions.bugsnag.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <!-- OG / Social Share Tags -->
+<!--    <meta-->
+<!--      property="og:image"-->
+<!--      content="https://api-server-3.goaffpro.com/extras/og_image.jpg"-->
+<!--    />-->
+<!--    <meta property="og:image:width" content="1200" />-->
+<!--    <meta property="og:image:height" content="630" />-->
+<!--    <meta property="og:type" content="website" />-->
+<!--    <meta name="twitter:card" content="summary_large_image" />-->
+<!--    <meta-->
+<!--      name="twitter:image"-->
+<!--      content="https://api-server-3.goaffpro.com/extras/og_image_twitter.jpg"-->
+<!--    />-->
+    <title>Affiliate Portal</title>
+    <script type="module" crossorigin src="/assets/index-BZmp5Zxe.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DaUk9Zaw.css">
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script>
+      if (window.addEventListener) {
+        window.addEventListener("message", handleMessage, false);
+        // message event handler (e is event object)
+        function handleMessage(e) {
+          // Reference to element for data display
+          if (e.data.load_iframe_resizer) {
+            loadIframeResizer();
+          }
+        }
+      }
+      if (window.self !== window.top) {
+        // it is embedded
+        loadIframeResizer();
+        const style = document.createElement("style");
+        document.body.appendChild(style);
+        style.innerHTML = ".min-vh-100{min-height:inherit !important}";
+      }
+      function loadIframeResizer() {
+        var script = document.createElement("script");
+        script.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.6/iframeResizer.contentWindow.min.js";
+        document.head.appendChild(script);
+      }
+    </script>
+    <script type="text/javascript">
+      function setupResizer() {
+        const style = document.createElement("style");
+        document.body.appendChild(style);
+        style.innerHTML = ".min-vh-100{min-height:inherit !important}";
+        const targetNode = document.getElementById("root");
+
+        // Options for the observer (which mutations to observe)
+        const config = { attributes: true, childList: true, subtree: true };
+
+        // Callback function to execute when mutations are observed
+        const callback = function (mutationsList, observer) {
+          setHeight();
+        };
+        //setInterval(setHeight, 1000)
+        function getDocHeight() {
+          return targetNode.offsetHeight;
+        }
+
+        // Create an observer instance linked to the callback function
+        const observer = new MutationObserver(callback);
+
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
+        function setHeight() {
+          const height = getDocHeight();
+          window.parent.postMessage({ affiliate_page_height: height }, "*");
+        }
+        setHeight();
+        //setInterval(setHeight, 1000)
+      }
+      if (window.addEventListener) {
+        window.addEventListener("message", handleMessage, false);
+        // message event handler (e is event object)
+        function handleMessage(e) {
+          // Reference to element for data display
+          if (e.data.setup_resizer) {
+            setupResizer();
+            window.removeEventListener("message", handleMessage);
+          }
+        }
+      }
+      // Later, you can stop observing
+      //    observer.disconnect();
+    </script>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-B6Q4zhvB.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-Djer_LKJ.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
